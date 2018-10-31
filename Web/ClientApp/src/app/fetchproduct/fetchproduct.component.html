@@ -1,0 +1,36 @@
+<h1>Products Catalog</h1>  
+  
+  
+<p *ngIf="!productsList"><em>Loading...</em></p>  
+  
+<p>  
+  <button [routerLink]="['/register-product']" class="btn btn-primary">Create New</button> <a href="{{ excelLink }}" target="_blank" class="btn btn-info">Export Excel</a>
+</p>
+<div class="row">
+  <div class="col-md-4">
+    <input type="text" [(ngModel)]="nameQuery" (change)="getProducts()"/><button (click)="getProducts()"><i class="	glyphicon glyphicon-search"></i></button>
+  </div>
+</div>
+  
+<table class='table' *ngIf="productsList">  
+  <thead>  
+  <tr>  
+    <th>ID</th>  
+    <th>Name</th>  
+    <th>Price</th>  
+  </tr>  
+  </thead>  
+  <tbody>  
+  <tr *ngFor="let prd of productsList">  
+    <td>{{ prd.id }}</td>  
+    <td>{{ prd.name }}</td>  
+    <td>{{ prd.price }}</td>  
+    <td>  
+    <td>  
+      <a [routerLink]="['/product/view/', prd.id]"><i class="glyphicon glyphicon-eye-open"></i> View</a> |  
+      <a [routerLink]="['/product/edit/', prd.id]"><i class="glyphicon glyphicon-pencil"></i> Edit</a> |  
+      <a (click)="delete(prd.id)"><i class="glyphicon glyphicon-remove"></i> Delete</a>  
+    </td>  
+  </tr>  
+  </tbody>  
+</table>  
