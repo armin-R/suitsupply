@@ -14,7 +14,7 @@
   <div class="form-group row">
     <label class=" control-label col-md-12">Price</label>
     <div class="col-md-4">
-      <input class="form-control" #priceText type="number" formControlName="price" [(ngModel)]="currentProduct.price" required>
+      <input class="form-control" #priceText type="number" min="0" max="9999999" formControlName="price" [(ngModel)]="currentProduct.price" required>
     </div>
     <span class="text-danger" *ngIf="price.invalid && formDir.submitted">
       Price is required.

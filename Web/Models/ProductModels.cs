@@ -24,7 +24,9 @@ namespace Armin.Suitsupply.Web.Models
 
         public IFormFile Photo { get; set; }
 
-        [Required] public decimal Price { get; set; }
+        [Required]
+        [Range(0.0, (double)decimal.MaxValue)]
+        public decimal Price { get; set; }
     }
 
 
